@@ -1,0 +1,194 @@
+# QuickCMD Plugin Example Prompts
+
+This file contains example prompts that demonstrate plugin behavior for testing and development.
+
+## Git Plugin Prompts
+
+### Safe Operations
+- "show git status"
+- "create branch feature-login"
+- "list all branches"
+- "show git log"
+
+### Commit Operations
+- "commit all changes"
+- "commit all changes with message 'Fix authentication bug'"
+- "create backup branch and commit changes"
+- "stage all files and commit"
+
+### Branch Operations
+- "create branch hotfix-security"
+- "switch to branch main"
+- "delete branch old-feature"
+- "merge branch feature-x into main"
+
+### Backup and Undo
+- "create backup branch before making changes"
+- "revert last commit"
+- "undo last 3 commits"
+
+### High-Risk Operations (require approval)
+- "force push to origin main"
+- "delete branch production"
+- "reset hard to previous commit"
+
+## Kubernetes Plugin Prompts
+
+### Read Operations (Safe)
+- "get pods"
+- "get pods in namespace production"
+- "list all deployments"
+- "describe pod nginx-123"
+- "describe deployment api"
+- "show service endpoints"
+
+### Scale Operations (Require Approval)
+- "scale deployment api to 5 replicas"
+- "scale deployment frontend to 10"
+- "set deployment backend replicas to 3"
+
+### Apply/Create Operations (Require Approval)
+- "apply manifest deployment.yaml"
+- "apply config from k8s/service.yaml"
+- "create deployment from manifest"
+
+### Delete Operations (High Risk)
+- "delete pod nginx-123"
+- "delete deployment old-api"
+- "remove service legacy-backend"
+
+### Namespace Operations
+- "get pods in namespace staging"
+- "list deployments in namespace production"
+- "describe service api in namespace default"
+
+## AWS Plugin Prompts
+
+### Read Operations (Safe, No Cost)
+- "list ec2 instances"
+- "list s3 buckets"
+- "describe cloudformation stack my-stack"
+- "show all running instances"
+- "list all security groups"
+
+### Low-Cost Operations
+- "create s3 bucket my-app-logs"
+- "describe instance i-1234567890abcdef0"
+- "list all lambda functions"
+
+### Resource Modification (Require Approval)
+- "increase asg my-asg to 5"
+- "set auto scaling group web-servers to 10"
+- "modify asg api-servers desired capacity to 8"
+
+### High-Cost Operations (Require Approval)
+- "launch 10 ec2 instances"
+- "increase asg production to 50"
+- "create rds instance db.m5.large"
+
+### Blocked Operations (Credential Exposure)
+- "configure aws access key AKIAIOSFODNN7EXAMPLE" (BLOCKED)
+- "set secret key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY" (BLOCKED)
+
+## Combined/Complex Prompts
+
+### Git + Backup
+- "create backup branch and commit all changes with message 'Before refactor'"
+- "make a safety checkpoint before deleting old files"
+
+### K8s + Namespace
+- "scale deployment api to 5 replicas in namespace production"
+- "delete pod failing-worker in namespace staging"
+
+### AWS + Cost Awareness
+- "increase asg my-asg to 20 instances" (triggers cost warning)
+- "create 5 new ec2 instances" (triggers cost approval)
+
+## Edge Cases and Error Handling
+
+### Ambiguous Prompts
+- "scale to 5" (missing deployment name)
+- "delete pod" (missing pod name)
+- "create bucket" (missing bucket name)
+
+### Invalid Operations
+- "delete all pods" (too dangerous, should be blocked)
+- "force push to production" (requires strong confirmation)
+- "rm -rf /" (blocked by core denylist)
+
+### Non-Plugin Prompts (Fallback to Core)
+- "find files larger than 100MB"
+- "delete all .DS_Store files"
+- "show disk usage"
+
+## Testing Scenarios
+
+### Confidence Scoring
+- "commit changes" (high confidence - exact match)
+- "save my work" (medium confidence - fuzzy match)
+- "do git stuff" (low confidence - vague)
+
+### Risk Classification
+- "git status" (safe)
+- "scale deployment" (medium)
+- "delete pod" (high)
+- "force push" (high)
+
+### Approval Requirements
+- "create branch" (no approval)
+- "delete branch" (approval required)
+- "kubectl apply" (approval required)
+- "increase asg to 100" (cost approval required)
+
+### Plugin Metadata
+- Git: backup branch names, undo strategies
+- K8s: RBAC context, namespace info
+- AWS: cost estimates, region info
+
+## Performance Testing
+
+### Rapid Fire Prompts
+1. "list pods"
+2. "get deployments"
+3. "show git status"
+4. "list s3 buckets"
+5. "describe stack"
+
+### Long Prompts
+- "create a new git branch called feature-user-authentication-with-oauth2-support and commit all my current changes with a descriptive message about implementing the new login flow"
+
+### Special Characters
+- "commit with message 'Fix: handle special chars like $, &, |'"
+- "create bucket my-app-logs-2024-01-07"
+- "scale deployment api-v2.0 to 5"
+
+## Multi-Language Support (Future)
+
+### Spanish
+- "listar pods"
+- "escalar deployment a 5 replicas"
+
+### French
+- "créer une branche git"
+- "lister les buckets s3"
+
+---
+
+**Usage:**
+```bash
+# Test a specific prompt
+quickcmd "create backup branch and commit changes"
+
+# Test with dry-run
+quickcmd "delete pod nginx-123" --dry-run
+
+# Test with sandbox
+quickcmd "scale deployment api to 5" --sandbox
+```
+
+**Testing Tips:**
+1. Start with safe read operations
+2. Test approval workflows with medium-risk operations
+3. Verify cost thresholds with AWS operations
+4. Check undo strategies are generated for destructive ops
+5. Confirm plugin metadata appears in audit logs

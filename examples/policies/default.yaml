@@ -1,0 +1,99 @@
+# QuickCMD Default Policy Configuration
+# This file defines security policies for command execution
+
+# Allowlist: Commands matching these patterns are explicitly allowed
+# If allowlist is empty, all commands are allowed (subject to denylist)
+# If allowlist has entries, ONLY matching commands are allowed
+allowlist: []
+  # Example patterns:
+  # - pattern: "^ls "
+  #   description: "Allow ls commands"
+  # - pattern: "^git (status|log|diff)"
+  #   description: "Allow safe git read operations"
+
+# Denylist: Commands matching these patterns are ALWAYS blocked
+denylist:
+  - pattern: 'rm\s+-rf\s+/'
+    description: "Prevent deletion of root directory"
+  
+  - pattern: 'rm\s+-rf\s+/\*'
+    description: "Prevent deletion of all root contents"
+  
+  - pattern: ':\(\)\s*\{\s*:\|:&\s*\};:'
+    description: "Prevent fork bomb"
+  
+  - pattern: 'shutdown'
+    description: "Prevent system shutdown"
+  
+  - pattern: 'reboot'
+    description: "Prevent system reboot"
+  
+  - pattern: 'mkfs'
+    description: "Prevent filesystem formatting"
+  
+  - pattern: 'dd\s+if=.*of=/dev/(sd|hd|nvme)'
+    description: "Prevent disk overwrite"
+  
+  - pattern: 'chmod\s+777\s+/'
+    description: "Prevent dangerous permission changes on root"
+  
+  - pattern: 'curl.*\|\s*bash'
+    description: "Prevent piping curl to bash"
+  
+  - pattern: 'wget.*\|\s*sh'
+    description: "Prevent piping wget to shell"
+  
+  - pattern: 'eval\s+\$\('
+    description: "Prevent dangerous eval usage"
+
+# Approval requirements
+approval:
+  # Require confirmation for high-risk commands
+  high_risk: true
+  
+  # Require confirmation for all commands (set to false for power users)
+  require_confirmation: false
+  
+  # Require confirmation for destructive operations
+  destructive_ops: true
+  
+  # List of users allowed to execute commands (empty = all users)
+  allowed_users: []
+  
+  # Require multi-party approval for sensitive operations
+  require_multi_party: false
+
+# Secrets handling
+secrets:
+  # Automatically redact environment variables in logs
+  redact_env_vars: true
+  
+  # Custom patterns to redact from logs
+  redact_patterns:
+    - 'password\s*=\s*[^\s]+'
+    - 'token\s*=\s*[^\s]+'
+    - 'api[_-]?key\s*=\s*[^\s]+'
+    - 'secret\s*=\s*[^\s]+'
+  
+  # Enable Vault integration for credential retrieval
+  vault_integration: false
+
+# Sandbox configuration
+sandbox:
+  # Enable sandboxed execution
+  enabled: true
+  
+  # Default execution mode: "dry-run", "sandbox", or "direct"
+  default_mode: "dry-run"
+  
+  # Allow network access in sandbox
+  network_access: false
+  
+  # Maximum CPU allocation (Docker CPU shares)
+  max_cpu: "1.0"
+  
+  # Maximum memory allocation
+  max_memory: "512m"
+  
+  # Maximum execution time in seconds
+  max_time_seconds: 300

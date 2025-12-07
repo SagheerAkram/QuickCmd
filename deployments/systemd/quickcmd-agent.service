@@ -1,0 +1,47 @@
+[Unit]
+Description=QuickCMD Remote Agent
+Documentation=https://github.com/yourusername/quickcmd
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=quickcmd
+Group=quickcmd
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/quickcmd
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=512
+
+# Restart policy
+Restart=on-failure
+RestartSec=5s
+
+# Executable
+ExecStart=/usr/local/bin/quickcmd-agent --config=/etc/quickcmd/agent-config.yaml
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=quickcmd-agent
+
+[Install]
+WantedBy=multi-user.target

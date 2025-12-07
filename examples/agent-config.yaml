@@ -1,0 +1,35 @@
+# QuickCMD Agent Configuration
+
+# Server settings
+port: 8443
+tls_cert_file: "/etc/quickcmd/agent-cert.pem"
+tls_key_file: "/etc/quickcmd/agent-key.pem"
+
+# Authentication
+# Generate with: quickcmd agent gen-key
+hmac_secret: "CHANGE_ME_GENERATE_WITH_gen-key"
+
+# Allowed controllers (controller IDs that can submit jobs)
+allowed_controllers:
+  - "controller-1"
+  - "https://quickcmd-controller.example.com"
+
+# Execution settings
+max_concurrent_jobs: 5
+allowed_images:
+  - "alpine:latest"
+  - "ubuntu:latest"
+  - "python:3.11-slim"
+default_image: "alpine:latest"
+
+# Security
+run_as_user: "quickcmd"
+run_as_group: "quickcmd"
+
+# Sandbox defaults
+default_cpu_limit: 0.5        # CPU cores
+default_memory_limit: 268435456  # 256 MB in bytes
+default_timeout_seconds: 300   # 5 minutes
+
+# Audit
+audit_db_path: "/var/lib/quickcmd/agent-audit.db"
