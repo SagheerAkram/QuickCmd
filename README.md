@@ -69,25 +69,25 @@ Web UI with role-based access control, approval workflows, and complete audit tr
 
 ┌──────────────┐         ┌──────────────┐         ┌──────────────┐
 │   Web UI     │         │  Controller  │         │    Agent     │
-│  (Next.js)   │◀─JWT────│   (CLI/API)  │──HMAC───▶│   (HTTPS)    │
-│              │         │              │         │              │
+│  (Next.js)   │◀───────▶│   (CLI/API)  │◀───────▶│   (HTTPS)    │
+│              │   JWT   │              │  HMAC   │              │
 │  • Login     │         │  • Translate │         │  • Validate  │
 │  • History   │         │  • Policy    │         │  • Execute   │
 │  • Approvals │         │  • Plugins   │         │  • Stream    │
-└──────────────┘         └──────────────┘         └──────────────┘
-                                │                         │
-                         ┌──────┴──────┐           ┌──────┴──────┐
-                         │             │           │             │
-                    ┌────▼────┐  ┌────▼────┐ ┌────▼────┐  ┌────▼────┐
-                    │Translator│  │ Policy  │ │ Sandbox │  │  Audit  │
-                    │  Engine  │  │ Engine  │ │ (Docker)│  │ (SQLite)│
-                    └─────────┘  └─────────┘ └─────────┘  └─────────┘
-                         │             │           │             │
-                    ┌────▼────┐  ┌────▼────┐ ┌────▼────┐  ┌────▼────┐
-                    │ Plugins │  │Denylist │ │Resource │  │Redaction│
-                    │Git/K8s/ │  │Allowlist│ │ Limits  │  │ Secrets │
-                    │  AWS    │  │ Secrets │ │ Network │  │  Logs   │
-                    └─────────┘  └─────────┘ └─────────┘  └─────────┘
+└──────────────┘         └───────┬──────┘         └───────┬──────┘
+                                 │                        │
+                    ┌────────────┼────────────┐          │
+                    │            │            │          │
+               ┌────▼────┐  ┌───▼────┐  ┌───▼────┐ ┌───▼────┐
+               │Translate│  │ Policy │  │ Sandbox│ │ Audit  │
+               │ Engine  │  │ Engine │  │(Docker)│ │(SQLite)│
+               └────┬────┘  └───┬────┘  └───┬────┘ └───┬────┘
+                    │           │           │          │
+               ┌────▼────┐  ┌───▼────┐  ┌───▼────┐ ┌──▼─────┐
+               │ Plugins │  │Denylist│  │Resource│ │Redact  │
+               │Git/K8s/ │  │Allowlst│  │ Limits │ │Secrets │
+               │  AWS    │  │Secrets │  │Network │ │ Logs   │
+               └─────────┘  └────────┘  └────────┘ └────────┘
 ```
 
 ### Security Flow
