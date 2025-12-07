@@ -8,6 +8,7 @@
 ![Go Version](https://img.shields.io/badge/go-1.21+-00ADD8.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen.svg)
+[![Discord](https://img.shields.io/discord/YOUR_DISCORD_ID?color=7289da&label=Discord&logo=discord&logoColor=white)](https://discord.gg/Bg3gDAqDwz)
 
 **Created by [Antigravity](https://github.com/google-deepmind) - Advanced Agentic AI Coding Assistant**
 
@@ -758,6 +759,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ## 📞 Support
 
+- **Discord Community**: [Join our Discord](https://discord.gg/Bg3gDAqDwz) - Get help, share ideas, and connect with other users!
 - **Issues**: [GitHub Issues](https://github.com/SagheerAkram/QuickCmd/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/SagheerAkram/QuickCmd/discussions)
 

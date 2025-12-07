@@ -263,6 +263,7 @@ Add screenshots for UI changes.
 
 Need help? Here's how:
 
+- 💬 **Discord**: [Join our community](https://discord.gg/Bg3gDAqDwz) - Chat with other contributors!
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/SagheerAkram/QuickCmd/discussions)
 - 🐛 **Issues**: [GitHub Issues](https://github.com/SagheerAkram/QuickCmd/issues)
 - 📧 **Contact**: Reach out to [@SagheerAkram](https://github.com/SagheerAkram)
