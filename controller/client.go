@@ -11,7 +11,7 @@ import (
 	"time"
 	
 	"github.com/gorilla/websocket"
-	"github.com/yourusername/quickcmd/agent"
+	"github.com/SagheerAkram/QuickCmd/agent"
 )
 
 // Client represents a controller client for submitting jobs to agents

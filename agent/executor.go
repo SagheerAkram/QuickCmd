@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"time"
 	
-	"github.com/yourusername/quickcmd/core/audit"
-	"github.com/yourusername/quickcmd/core/executor"
-	"github.com/yourusername/quickcmd/core/plugins"
-	"github.com/yourusername/quickcmd/core/policy"
+	"github.com/SagheerAkram/QuickCmd/core/audit"
+	"github.com/SagheerAkram/QuickCmd/core/executor"
+	"github.com/SagheerAkram/QuickCmd/core/plugins"
+	"github.com/SagheerAkram/QuickCmd/core/policy"
 )
 
 // JobExecutor executes jobs using the sandbox runner

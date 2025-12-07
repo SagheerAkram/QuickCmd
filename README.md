@@ -11,6 +11,9 @@
 
 **Created by [Antigravity](https://github.com/google-deepmind) - Advanced Agentic AI Coding Assistant**
 
+**Developed by:** [Sagheer Akram](https://github.com/SagheerAkram)  
+**Contact:** Discord: `flokii9990` | Instagram: [@rizzsagheer](https://instagram.com/rizzsagheer) | Threads: [@rizzsagheer](https://threads.net/@rizzsagheer)
+
 </div>
 
 ---
@@ -130,7 +133,7 @@ User Input
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/quickcmd.git
+git clone https://github.com/SagheerAkram/QuickCmd.git
 cd quickcmd
 
 # Build all components
@@ -145,12 +148,12 @@ sudo make install
 
 ```bash
 # Download latest release
-curl -L https://github.com/yourusername/quickcmd/releases/latest/download/quickcmd-linux-amd64 -o quickcmd
+curl -L https://github.com/SagheerAkram/QuickCmd/releases/latest/download/quickcmd-linux-amd64 -o quickcmd
 chmod +x quickcmd
 sudo mv quickcmd /usr/local/bin/
 
 # Download agent
-curl -L https://github.com/yourusername/quickcmd/releases/latest/download/quickcmd-agent-linux-amd64 -o quickcmd-agent
+curl -L https://github.com/SagheerAkram/QuickCmd/releases/latest/download/quickcmd-agent-linux-amd64 -o quickcmd-agent
 chmod +x quickcmd-agent
 sudo mv quickcmd-agent /usr/local/bin/
 ```
@@ -367,8 +370,8 @@ package main
 import (
     "context"
     "time"
-    "github.com/yourusername/quickcmd/agent"
-    "github.com/yourusername/quickcmd/controller"
+    "github.com/SagheerAkram/QuickCmd/agent"
+    "github.com/SagheerAkram/QuickCmd/controller"
 )
 
 func main() {
@@ -460,7 +463,7 @@ Navigate to `http://localhost:3001`
 ```go
 package myplugin
 
-import "github.com/yourusername/quickcmd/core/plugins"
+import "github.com/SagheerAkram/QuickCmd/core/plugins"
 
 type MyPlugin struct{}
 
@@ -755,8 +758,8 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/quickcmd/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/quickcmd/discussions)
+- **Issues**: [GitHub Issues](https://github.com/SagheerAkram/QuickCmd/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/SagheerAkram/QuickCmd/discussions)
 
 ---
 
@@ -776,6 +779,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 *Designed and built by Antigravity - Because awesome AI deserves awesome tools*
 
-[⭐ Star on GitHub](https://github.com/yourusername/quickcmd) | [📖 Documentation](docs/) | [🐛 Report Bug](https://github.com/yourusername/quickcmd/issues)
+[⭐ Star on GitHub](https://github.com/SagheerAkram/QuickCmd) | [📖 Documentation](docs/) | [🐛 Report Bug](https://github.com/SagheerAkram/QuickCmd/issues)
 
 </div>

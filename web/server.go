@@ -7,7 +7,7 @@ import (
 	"strings"
 	
 	"github.com/gorilla/mux"
-	"github.com/yourusername/quickcmd/core/audit"
+	"github.com/SagheerAkram/QuickCmd/core/audit"
 )
 
 // Server represents the web API server

@@ -1,4 +1,4 @@
-module github.com/yourusername/quickcmd
+module github.com/SagheerAkram/QuickCmd
 
 go 1.21
 
