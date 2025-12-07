@@ -8,7 +8,7 @@
 ![Go Version](https://img.shields.io/badge/go-1.21+-00ADD8.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen.svg)
-[![Discord](https://img.shields.io/discord/YOUR_DISCORD_ID?color=7289da&label=Discord&logo=discord&logoColor=white)](https://discord.gg/Bg3gDAqDwz)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Server-7289da?logo=discord&logoColor=white)](https://discord.gg/Bg3gDAqDwz)
 
 **Created by [Antigravity](https://github.com/google-deepmind) - Advanced Agentic AI Coding Assistant**
 
