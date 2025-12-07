@@ -279,12 +279,43 @@ func displayCandidate(num int, c *translator.Candidate) {
 	// Command (copyable)
 	fmt.Printf("   %s%s%s\n", colorCyan, c.Command, colorReset)
 	
-	// Confidence
+	// Confidence with detailed breakdown
 	confidenceBar := makeProgressBar(c.Confidence, 20)
 	fmt.Printf("   Confidence: %s %d%%\n", confidenceBar, c.Confidence)
 	
+	// Show detailed breakdown
+	breakdown := c.CalculateConfidenceBreakdown("")
+	if len(breakdown.Components) > 0 {
+		fmt.Println("   Components:")
+		componentNames := map[translator.ConfidenceComponent]string{
+			translator.ComponentPattern: "Pattern Match",
+			translator.ComponentContext: "Context",
+			translator.ComponentRisk:    "Risk",
+			translator.ComponentPlugin:  "Plugin",
+		}
+		for component, score := range breakdown.Components {
+			name := componentNames[component]
+			bar := makeProgressBar(score, 10)
+			fmt.Printf("     %-15s %s %d%%\n", name+":", bar, score)
+		}
+	}
+	
 	// Explanation
 	fmt.Printf("   %s\n", c.Explanation)
+	
+	// Warnings from breakdown
+	if len(breakdown.Warnings) > 0 {
+		for _, warning := range breakdown.Warnings {
+			fmt.Printf("   %s⚠️  %s%s\n", colorYellow, warning, colorReset)
+		}
+	}
+	
+	// Tips from breakdown
+	if len(breakdown.Tips) > 0 {
+		for _, tip := range breakdown.Tips {
+			fmt.Printf("   %s💡 %s%s\n", colorCyan, tip, colorReset)
+		}
+	}
 	
 	// Warnings
 	if c.Destructive {

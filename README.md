@@ -59,6 +59,19 @@ Deploy remote agents with HMAC authentication and WebSocket log streaming.
 ### 👥 Team Collaboration
 Web UI with role-based access control, approval workflows, and complete audit trails.
 
+### 🧠 Phase 2: Intelligence Features (NEW!)
+
+**Confidence Scoring Visualization**
+- See WHY QuickCMD chose each command
+- 4-component breakdown (Pattern, Context, Risk, Plugin)
+- Visual progress bars and detailed explanations
+- Smart tips and warnings
+
+**Coming Soon:**
+- Visual Safety Rule Builder (no YAML!)
+- AI-Powered Command Suggestions
+- Security Gap Analysis
+
 ---
 
 ## 📊 Architecture
